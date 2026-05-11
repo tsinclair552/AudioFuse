@@ -2,6 +2,7 @@ from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QPainter, QColor
 from PySide6.QtWidgets import QWidget, QFileDialog, QVBoxLayout, QLabel, QMessageBox
 from app.audio_engine import AudioEngine
+from app.theme import PANEL_STYLE, product_shadow, INK, INK_MUTED, PRIMARY
 
 
 class AudioPanel(QWidget):
@@ -20,10 +21,38 @@ class AudioPanel(QWidget):
         self._setup_ui()
 
     def _setup_ui(self):
+        self.setStyleSheet(PANEL_STYLE)
+        self.setGraphicsEffect(product_shadow(self))
         layout = QVBoxLayout(self)
-        self.label = QLabel(f"{self.title}\nClick to load")
+        layout.setContentsMargins(24, 24, 24, 24)
+        self.label = QLabel(self._empty_text())
         self.label.setAlignment(Qt.AlignCenter)
+        self.label.setTextFormat(Qt.RichText)
         layout.addWidget(self.label)
+
+    def _empty_text(self) -> str:
+        return (
+            f"<span style='font-size:28px; font-weight:300; color:{INK};'>"
+            f"{self.title}</span><br>"
+            f"<span style='font-size:14px; color:{INK_MUTED};'>Click to load</span>"
+        )
+
+    def _loaded_text(self, duration_secs: float) -> str:
+        minutes = int(duration_secs // 60)
+        seconds = int(duration_secs % 60)
+        return (
+            f"<span style='font-size:28px; font-weight:300; color:{INK};'>"
+            f"{self.title}</span><br>"
+            f"<span style='font-size:17px; color:{INK};'>"
+            f"{minutes:02d}:{seconds:02d}</span>"
+        )
+
+    def _error_text(self, message: str) -> str:
+        return (
+            f"<span style='font-size:28px; font-weight:300; color:{INK};'>"
+            f"{self.title}</span><br>"
+            f"<span style='font-size:14px; color:red;'>{message}</span>"
+        )
 
     def mousePressEvent(self, event):
         super().mousePressEvent(event)
@@ -54,34 +83,30 @@ class AudioPanel(QWidget):
             self.segment = self.engine.load(path, slot=self.slot)
             self.waveform = self.engine.get_waveform_data(self.segment)
             duration = self.segment.duration_seconds
-            self.label.setText(
-                f"{self.title}\n"
-                f"{int(duration // 60):02d}:{int(duration % 60):02d}"
-            )
+            self.label.setText(self._loaded_text(duration))
             self.clip_loaded.emit(path)
             self.update()
         except Exception as e:
             self.segment = None
             self.waveform = []
-            self.label.setText(f"{self.title}\nError: {e}")
+            self.label.setText(self._error_text(str(e)))
             self.clip_loaded.emit("")
             QMessageBox.warning(self, "Load Error", f"Failed to load audio:\n{e}")
 
     def paintEvent(self, event):
         super().paintEvent(event)
-        if not self.waveform:
-            return
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
-        w = self.width()
-        h = self.height()
-        painter.setPen(QColor(100, 140, 255))
-        peaks = self.waveform
-        n_peaks = len(peaks)
-        bar_width = max(2, w / n_peaks)
-        mid_y = h / 2
-        for i, peak in enumerate(peaks):
-            normalized = peak / 32768.0
-            bar_height = normalized * (h / 2 - 10)
-            x = i * bar_width
-            painter.drawLine(int(x), int(mid_y - bar_height), int(x), int(mid_y + bar_height))
+        if self.waveform:
+            w = self.width()
+            h = self.height()
+            painter.setPen(QColor(PRIMARY))
+            peaks = self.waveform
+            n_peaks = len(peaks)
+            bar_width = max(2, w / n_peaks)
+            mid_y = h / 2
+            for i, peak in enumerate(peaks):
+                normalized = peak / 32768.0
+                bar_height = normalized * (h / 2 - 10)
+                x = i * bar_width
+                painter.drawLine(int(x), int(mid_y - bar_height), int(x), int(mid_y + bar_height))
