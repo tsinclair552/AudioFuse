@@ -56,6 +56,14 @@ GAP_BUTTON_STYLE = f"""
         background: {PRIMARY_PRESSED};
         color: white;
     }}
+    QPushButton:checked {{
+        background: {PRIMARY};
+        color: white;
+    }}
+    QPushButton:checked:hover {{
+        background: {PRIMARY_HOVER};
+        color: white;
+    }}
 """
 
 ACTION_BUTTON_STYLE = f"""
