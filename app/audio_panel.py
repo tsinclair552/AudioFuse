@@ -16,6 +16,7 @@ class AudioPanel(QWidget):
         self.waveform = []
         self.setMinimumSize(250, 150)
         self.setCursor(Qt.PointingHandCursor)
+        self.setAcceptDrops(True)
         self._setup_ui()
 
     def _setup_ui(self):
@@ -33,6 +34,20 @@ class AudioPanel(QWidget):
         )
         if path:
             self.load_file(path)
+
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasUrls():
+            for url in event.mimeData().urls():
+                if url.isLocalFile() and url.toLocalFile().lower().endswith(('.wav', '.mp3')):
+                    event.acceptProposedAction()
+                    return
+
+    def dropEvent(self, event):
+        for url in event.mimeData().urls():
+            if url.isLocalFile() and url.toLocalFile().lower().endswith(('.wav', '.mp3')):
+                self.load_file(url.toLocalFile())
+                event.acceptProposedAction()
+                return
 
     def load_file(self, path: str):
         try:
