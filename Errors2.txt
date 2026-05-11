@@ -1,0 +1,785 @@
+-------------------------------------
+Translated Report (Full Report Below)
+-------------------------------------
+Process:             AudioFuse [79114]
+Path:                /Users/USER/*/AudioFuse.app/Contents/MacOS/AudioFuse
+Identifier:          AudioFuse
+Version:             0.0.0 (???)
+Code Type:           ARM-64 (Native)
+Role:                Foreground
+Parent Process:      launchd [1]
+Coalition:           AudioFuse [55761]
+User ID:             501
+
+Date/Time:           2026-05-10 18:46:27.5940 -0600
+Launch Time:         2026-05-10 18:46:27.3114 -0600
+Hardware Model:      Mac14,13
+OS Version:          macOS 26.4.1 (25E253)
+Release Type:        User
+
+Crash Reporter Key:  A262BF61-E6E7-FA3B-6E17-4AB40FF326D1
+Incident Identifier: 9BB19266-F7C0-489C-8F71-E161D78CF308
+
+Sleep/Wake UUID:       F65BAE36-A389-4FC0-AFEC-DC72BAA5CED3
+
+Time Awake Since Boot: 390000 seconds
+Time Since Wake:       19468 seconds
+
+System Integrity Protection: enabled
+
+Triggered by Thread: 0, Dispatch Queue: com.apple.main-thread
+
+Exception Type:    EXC_BAD_ACCESS (SIGSEGV)
+Exception Subtype: KERN_INVALID_ADDRESS at 0x0000000000000010
+Exception Codes:   0x0000000000000001, 0x0000000000000010
+
+Termination Reason:  Namespace SIGNAL, Code 11, Segmentation fault: 11
+Terminating Process: exc handler [79114]
+
+
+VM Region Info: 0x10 is not in any region.  Bytes before following region: 4306845680
+      REGION TYPE                    START - END         [ VSIZE] PRT/MAX SHRMOD  REGION DETAIL
+      UNUSED SPACE AT START
+--->  
+      __TEXT                      100b54000-100b60000    [   48K] r-x/r-x SM=COW  /Users/USER/*/AudioFuse.app/Contents/MacOS/AudioFuse
+
+Thread 0 Crashed::  Dispatch queue: com.apple.main-thread
+0   libpython3.12.dylib           	       0x1019136cc _PyObject_Malloc + 52
+1   libpython3.12.dylib           	       0x1019704a8 PyUnicode_FromString + 124
+2   libpython3.12.dylib           	       0x1019973a0 PyUnicode_InternFromString + 20
+3   libpyside6.abi3.6.11.dylib    	       0x1016bcb84 metaBuilderFromDict(_object*) + 148
+4   libpyside6.abi3.6.11.dylib    	       0x1016bcac4 PySide::SignalManager::retrieveMetaObject(_object*) + 24
+5   QtCore                        	       0x10306165c QMetaObject::cast(QObject const*) const + 40
+6   QtWidgets                     	       0x105794500 QWidgetPrivate::init(QWidget*, QFlags<Qt::WindowType>) + 108
+7   QtWidgets                     	       0x105794380 QWidget::QWidget(QWidgetPrivate&, QWidget*, QFlags<Qt::WindowType>) + 92
+8   QtWidgets                     	       0x10598c328 QDialog::QDialog(QDialogPrivate&, QWidget*, QFlags<Qt::WindowType>) + 32
+9   QtWidgets                     	       0x1059baec4 QMessageBox::QMessageBox(QMessageBox::Icon, QString const&, QString const&, QFlags<QMessageBox::StandardButton>, QWidget*, QFlags<Qt::WindowType>) + 272
+10  QtWidgets                     	       0x1059bc7c4 0x105750000 + 2541508
+11  QtWidgets.abi3.so             	       0x1061d8aac Sbk_QMessageBoxFunc_critical(_object*, _object*, _object*) + 1060
+12  libpython3.12.dylib           	       0x1019058c0 cfunction_call + 72
+13  libpython3.12.dylib           	       0x101a0eee8 _PyEval_EvalFrameDefault + 224488
+14  libpython3.12.dylib           	       0x1019d5940 PyEval_EvalCode + 260
+15  AudioFuse                     	       0x100b57328 0x100b54000 + 13096
+16  AudioFuse                     	       0x100b57c18 0x100b54000 + 15384
+17  dyld                          	       0x1842c3da4 start + 6992
+
+Thread 1:
+
+Thread 2:
+
+Thread 3:
+
+Thread 4::  Dispatch queue: com.apple.CoreAnalytics::Client XPC Reply
+0   libsystem_kernel.dylib        	       0x18463da74 kevent_id + 8
+1   libdispatch.dylib             	       0x1844e7a64 _dispatch_kq_poll + 220
+2   libdispatch.dylib             	       0x1844e8474 _dispatch_event_loop_wait_for_ownership + 460
+3   libdispatch.dylib             	       0x1844d46ac __DISPATCH_WAIT_FOR_QUEUE__ + 432
+4   libdispatch.dylib             	       0x1844d41f8 _dispatch_sync_f_slow + 140
+5   CoreAnalytics                 	       0x18e221e94 invocation function for block in CoreAnalytics::Client::retryXpcMessageHelper_sync(applesauce::xpc::dict, XPCMessagePriority, bool, unsigned char, unsigned long long) + 244
+6   libxpc.dylib                  	       0x18435dbb8 _xpc_connection_reply_callout + 120
+7   libxpc.dylib                  	       0x18435dab0 _xpc_connection_call_reply_async + 96
+8   libdispatch.dylib             	       0x1844de4e0 <deduplicated_symbol> + 16
+9   libdispatch.dylib             	       0x1844e252c _dispatch_mach_msg_async_reply_invoke + 340
+10  libdispatch.dylib             	       0x1844cce98 _dispatch_lane_serial_drain + 332
+11  libdispatch.dylib             	       0x1844cdb2c _dispatch_lane_invoke + 392
+12  libdispatch.dylib             	       0x1844d7e34 _dispatch_root_queue_drain_deferred_wlh + 284
+13  libdispatch.dylib             	       0x1844d7734 _dispatch_workloop_worker_thread + 720
+14  libsystem_pthread.dylib       	       0x18467bec0 _pthread_wqthread + 292
+15  libsystem_pthread.dylib       	       0x18467ac10 start_wqthread + 8
+
+Thread 5:
+
+Thread 6:: com.apple.NSEventThread
+0   libsystem_kernel.dylib        	       0x18463bc34 mach_msg2_trap + 8
+1   libsystem_kernel.dylib        	       0x18464e574 mach_msg2_internal + 76
+2   libsystem_kernel.dylib        	       0x1846449c0 mach_msg_overwrite + 480
+3   libsystem_kernel.dylib        	       0x18463bfc0 mach_msg + 24
+4   CoreFoundation                	       0x18473cd68 __CFRunLoopServiceMachPort + 160
+5   CoreFoundation                	       0x18473b654 __CFRunLoopRun + 1188
+6   CoreFoundation                	       0x18480dbe0 _CFRunLoopRunSpecificWithOptions + 532
+7   AppKit                        	       0x188c88c64 _NSEventThread + 184
+8   libsystem_pthread.dylib       	       0x18467fc58 _pthread_start + 136
+9   libsystem_pthread.dylib       	       0x18467ac1c thread_start + 8
+
+
+Thread 0 crashed with ARM Thread State (64-bit):
+    x0: 0x0000600000204068   x1: 0x0000000000000037   x2: 0x000000000000000e   x3: 0x0000000184686a30
+    x4: 0x0000600003f08080   x5: 0x0000000083821ffb   x6: 0x0000000003a00000   x7: 0x572dbd9154f6f0e0
+    x8: 0x0000000000000000   x9: 0x0000000101913698  x10: 0x0000000000000000  x11: 0x0000000000000002
+   x12: 0x0000000000000000  x13: 0x0000000000000000  x14: 0x0000000000000000  x15: 0x0000000000000000
+   x16: 0x0000000000000008  x17: 0x0000600000204060  x18: 0x0000000000000000  x19: 0x00000001020ad7c0
+   x20: 0x00000001016e4eb0  x21: 0x00000001016e4ebe  x22: 0x000000000000000e  x23: 0x000000016f2aa0f0
+   x24: 0x0000000000000000  x25: 0x0000000000000103  x26: 0x000000015c1a3a80  x27: 0x0000000106598350
+   x28: 0x0000000000000000   fp: 0x000000016f2a9d40   lr: 0x00000001019136c8
+    sp: 0x000000016f2a9cc0   pc: 0x00000001019136cc cpsr: 0x80001000
+   far: 0x0000000000000010  esr: 0x92000006 (Data Abort) byte read Translation fault
+
+Binary Images:
+       0x100b54000 -        0x100b5ffff AudioFuse (0.0.0) <3e66a4a5-502c-3f55-518b-eb61a4456e9f> /Users/USER/*/AudioFuse.app/Contents/MacOS/AudioFuse
+       0x101828000 -        0x101c1ffff libpython3.12.dylib (*) <3987c91f-7bf6-36e7-90e3-97e50d4d7f91> /Users/USER/*/AudioFuse.app/Contents/Frameworks/libpython3.12.dylib
+       0x100f8c000 -        0x100f97fff _struct.cpython-312-darwin.so (*) <0453b311-bb4a-32e5-82e5-927d5e5a2426> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/_struct.cpython-312-darwin.so
+       0x100fa8000 -        0x100fb3fff zlib.cpython-312-darwin.so (*) <a3813552-c4c4-30af-9ee8-672a1c71b4a4> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/zlib.cpython-312-darwin.so
+       0x100fec000 -        0x101003fff libz.1.dylib (*) <bb5557fa-69ac-3834-9573-f8f0e376ab1c> /Users/USER/*/AudioFuse.app/Contents/Frameworks/libz.1.dylib
+       0x100fc4000 -        0x100fcbfff _opcode.cpython-312-darwin.so (*) <001db5d5-0ef5-3abe-8c26-427b7139e3bf> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/_opcode.cpython-312-darwin.so
+       0x101114000 -        0x10111bfff binascii.cpython-312-darwin.so (*) <759b854d-de01-3447-99e6-6b567389c3f2> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/binascii.cpython-312-darwin.so
+       0x101298000 -        0x10129ffff _bz2.cpython-312-darwin.so (*) <ea51280e-85cc-3f99-8e7f-dce673ef68ae> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/_bz2.cpython-312-darwin.so
+       0x1012d4000 -        0x1012e7fff libbz2.dylib (*) <0f29847c-5689-38aa-a8fb-d9a99a2ae679> /Users/USER/*/AudioFuse.app/Contents/Frameworks/libbz2.dylib
+       0x1012b0000 -        0x1012bbfff _lzma.cpython-312-darwin.so (*) <f07e1538-948a-3b17-a579-253ae8e70ae6> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/_lzma.cpython-312-darwin.so
+       0x101328000 -        0x101347fff liblzma.5.dylib (*) <43c01aff-c040-33ff-bb38-5e1ec42d9e75> /Users/USER/*/AudioFuse.app/Contents/Frameworks/liblzma.5.dylib
+       0x101358000 -        0x101367fff math.cpython-312-darwin.so (*) <94838868-a625-320f-bc8f-4137114916a4> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/math.cpython-312-darwin.so
+       0x1012f8000 -        0x1012fffff _bisect.cpython-312-darwin.so (*) <f56ec859-50ab-30b8-bee7-ac7da9491a18> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/_bisect.cpython-312-darwin.so
+       0x101310000 -        0x101317fff _random.cpython-312-darwin.so (*) <3cc56fa5-ffe7-300c-a8d2-5cb77ed34443> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/_random.cpython-312-darwin.so
+       0x101478000 -        0x101483fff _sha2.cpython-312-darwin.so (*) <4990c95e-3b03-3210-99a9-eec63d8e3eb9> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/_sha2.cpython-312-darwin.so
+       0x101494000 -        0x101497fff Shiboken.abi3.so (*) <0ade699d-c23f-36bf-addb-a55839f388ca> /Users/USER/*/AudioFuse.app/Contents/Frameworks/shiboken6/Shiboken.abi3.so
+       0x101528000 -        0x101577fff libshiboken6.abi3.6.11.dylib (*) <b8ff54b9-9ad3-3ba7-9fe3-811a5f694a48> /Users/USER/*/AudioFuse.app/Contents/Frameworks/shiboken6/libshiboken6.abi3.6.11.dylib
+       0x102454000 -        0x1027bbfff QtCore.abi3.so (*) <d2307a43-fb37-31f0-8aeb-d552dee970a9> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/QtCore.abi3.so
+       0x1016a8000 -        0x1016e7fff libpyside6.abi3.6.11.dylib (*) <3a089e7d-d1fe-3dc2-9931-6e157e72ad57> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/libpyside6.abi3.6.11.dylib
+       0x102fb8000 -        0x1034a3fff org.qt-project.QtCore (6.11) <b0667a98-b1fe-378b-8a52-255db2e29c5a> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/Qt/lib/QtCore.framework/Versions/A/QtCore
+       0x105ff8000 -        0x106523fff QtWidgets.abi3.so (*) <b956f18a-ae09-370a-ac76-5e7cef837cf1> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/QtWidgets.abi3.so
+       0x105750000 -        0x105bbbfff org.qt-project.QtWidgets (6.11) <b97170bc-6bbb-3977-9e66-f307b7f5f0e1> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/Qt/lib/QtWidgets.framework/Versions/A/QtWidgets
+       0x1070c0000 -        0x10778bfff org.qt-project.QtGui (6.11) <69a761e1-e8ae-3ff4-b13e-97088d69e666> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/Qt/lib/QtGui.framework/Versions/A/QtGui
+       0x101eb8000 -        0x101f3ffff org.qt-project.QtDBus (6.11) <ec505890-3bf1-3f55-815d-ae73e1849238> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/Qt/lib/QtDBus.framework/Versions/A/QtDBus
+       0x1078d0000 -        0x107cc7fff QtGui.abi3.so (*) <6424c540-121c-32e3-9164-683ef71ea775> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/QtGui.abi3.so
+       0x101500000 -        0x101507fff fcntl.cpython-312-darwin.so (*) <c6564331-a4a1-3e95-aa7e-b259bdc2455f> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/fcntl.cpython-312-darwin.so
+       0x101718000 -        0x10171ffff _posixsubprocess.cpython-312-darwin.so (*) <480a7416-8453-344b-baef-f5aecd7f44a3> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/_posixsubprocess.cpython-312-darwin.so
+       0x10174c000 -        0x101757fff select.cpython-312-darwin.so (*) <d2e4d820-daab-31c9-a3fc-b2cfc17d99c3> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/select.cpython-312-darwin.so
+       0x101788000 -        0x101797fff array.cpython-312-darwin.so (*) <ea4dd53d-f79f-3b01-b3b2-969fd7c4637c> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/array.cpython-312-darwin.so
+       0x101768000 -        0x101773fff _json.cpython-312-darwin.so (*) <a1d001f8-a427-3bd8-9883-acf56453080b> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/_json.cpython-312-darwin.so
+       0x1017a8000 -        0x1017b3fff audioop.cpython-312-darwin.so (*) <fc554960-bce8-33b3-83ea-52fa9d209ea0> /Users/USER/*/AudioFuse.app/Contents/Frameworks/python3__dot__12/lib-dynload/audioop.cpython-312-darwin.so
+       0x102170000 -        0x1021fffff QtMultimedia.abi3.so (*) <8d195e17-377d-339e-a52d-13488d251f42> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/QtMultimedia.abi3.so
+       0x1029f4000 -        0x102adffff org.qt-project.QtMultimedia (6.11) <c1be6d34-c230-3d56-ab8a-4d6248d22f4d> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/Qt/lib/QtMultimedia.framework/Versions/A/QtMultimedia
+       0x102b34000 -        0x102c6bfff org.qt-project.QtNetwork (6.11) <436638dd-a4cf-366f-ac6b-7a49a2850aca> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/Qt/lib/QtNetwork.framework/Versions/A/QtNetwork
+       0x101730000 -        0x101733fff org.qt-project.QtConcurrent (6.11) <9622906c-e444-3c9a-9933-890ec898ee4d> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/Qt/lib/QtConcurrent.framework/Versions/A/QtConcurrent
+       0x102cd4000 -        0x102dd7fff QtNetwork.abi3.so (*) <4c820010-34a2-310a-9c71-6dbb82ed6870> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/QtNetwork.abi3.so
+       0x102e98000 -        0x102f47fff libqcocoa.dylib (*) <0d61082f-4583-39ec-81fe-89dd43afcc6f> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/Qt/plugins/platforms/libqcocoa.dylib
+       0x10242c000 -        0x102437fff libobjc-trampolines.dylib (*) <a4dd56f1-375a-3540-844b-5e397f0b78b3> /usr/lib/libobjc-trampolines.dylib
+       0x105ed8000 -        0x105efbfff libqmacstyle.dylib (*) <d367df20-39d1-3dc7-847d-9a982ad4eef8> /Users/USER/*/AudioFuse.app/Contents/Frameworks/PySide6/Qt/plugins/styles/libqmacstyle.dylib
+       0x1842a4000 -        0x184349ec7 dyld (*) <9f682dcf-340c-3bfa-bcdd-dd702f30313e> /usr/lib/dyld
+               0x0 - 0xffffffffffffffff ??? (*) <00000000-0000-0000-0000-000000000000> ???
+       0x184686000 -        0x18468e8f3 libsystem_platform.dylib (*) <d93ec420-f465-3a3a-916d-a04af9b023eb> /usr/lib/system/libsystem_platform.dylib
+       0x18463b000 -        0x18467828f libsystem_kernel.dylib (*) <51565b39-f595-3e96-a217-fef29815057a> /usr/lib/system/libsystem_kernel.dylib
+       0x1844c3000 -        0x18450a23f libdispatch.dylib (*) <e17aa23f-db2a-3302-b14c-f6b08c540fcf> /usr/lib/system/libdispatch.dylib
+       0x18e203000 -        0x18e232ddf com.apple.analyticsd (1.0) <ed4098ac-ece3-3a22-92f1-a2292dfc13f2> /System/Library/PrivateFrameworks/CoreAnalytics.framework/Versions/A/CoreAnalytics
+       0x18434e000 -        0x1843a251f libxpc.dylib (*) <618039c8-9965-3782-a7d2-90fd4c3dd66f> /usr/lib/system/libxpc.dylib
+       0x184679000 -        0x184685b3b libsystem_pthread.dylib (*) <e7a73008-0c09-31e3-9dd9-0c61652f0e85> /usr/lib/system/libsystem_pthread.dylib
+       0x1846bf000 -        0x184c1cc5f com.apple.CoreFoundation (6.9) <04941709-2330-3bf8-9213-6d33964db448> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+       0x188b2e000 -        0x18a250abf com.apple.AppKit (6.9) <59e23bd5-d01e-305a-b96f-a5790356049a> /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit
+
+External Modification Summary:
+  Calls made by other processes targeting this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by all processes on this machine:
+    task_for_pid: 32
+    thread_create: 0
+    thread_set_state: 0
+
+VM Region Summary:
+ReadOnly portion of Libraries: Total=1.3G resident=0K(0%) swapped_out_or_unallocated=1.3G(100%)
+Writable regions: Total=1.2G written=705K(0%) resident=705K(0%) swapped_out=0K(0%) unallocated=1.2G(100%)
+
+                                VIRTUAL   REGION 
+REGION TYPE                        SIZE    COUNT (non-coalesced) 
+===========                     =======  ======= 
+Activity Tracing                   256K        1 
+CoreGraphics                        16K        1 
+Foundation                          16K        1 
+Kernel Alloc Once                   32K        1 
+MALLOC                             1.2G       51 
+MALLOC guard page                  288K       18 
+STACK GUARD                       56.1M        7 
+Stack                             11.2M        7 
+VM_ALLOCATE                       8240K       11 
+__AUTH                            3052K      345 
+__AUTH_CONST                      53.9M      638 
+__CTF                               824        1 
+__DATA                            17.1M      626 
+__DATA_CONST                      28.5M      679 
+__DATA_DIRTY                      3859K      550 
+__FONT_DATA                        2352        1 
+__LINKEDIT                       587.8M       40 
+__OBJC_RO                         79.1M        1 
+__OBJC_RW                         2597K        1 
+__TEXT                           703.5M      696 
+__TPRO_CONST                       128K        2 
+mapped file                      234.2M       19 
+page table in kernel               705K        1 
+shared memory                      864K       15 
+===========                     =======  ======= 
+TOTAL                              3.0G     3713 
+
+
+-----------
+Full Report
+-----------
+
+{"app_name":"AudioFuse","timestamp":"2026-05-10 18:46:28.00 -0600","app_version":"0.0.0","slice_uuid":"3e66a4a5-502c-3f55-518b-eb61a4456e9f","build_version":"","platform":1,"bundleID":"AudioFuse","share_with_app_devs":0,"is_first_party":0,"bug_type":"309","os_version":"macOS 26.4.1 (25E253)","roots_installed":0,"name":"AudioFuse","incident_id":"9BB19266-F7C0-489C-8F71-E161D78CF308"}
+{
+  "uptime" : 390000,
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "Mac14,13",
+  "coalitionID" : 55761,
+  "osVersion" : {
+    "train" : "macOS 26.4.1",
+    "build" : "25E253",
+    "releaseType" : "User"
+  },
+  "captureTime" : "2026-05-10 18:46:27.5940 -0600",
+  "codeSigningMonitor" : 2,
+  "incident" : "9BB19266-F7C0-489C-8F71-E161D78CF308",
+  "pid" : 79114,
+  "translated" : false,
+  "cpuType" : "ARM-64",
+  "procLaunch" : "2026-05-10 18:46:27.3114 -0600",
+  "procStartAbsTime" : 9464078613067,
+  "procExitAbsTime" : 9464085344616,
+  "procName" : "AudioFuse",
+  "procPath" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/MacOS\/AudioFuse",
+  "bundleInfo" : {"CFBundleShortVersionString":"0.0.0","CFBundleIdentifier":"AudioFuse"},
+  "storeInfo" : {"deviceIdentifierForVendor":"444E13F2-53A7-573B-8B47-FB1E10AE7377","thirdParty":true},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "AudioFuse",
+  "crashReporterKey" : "A262BF61-E6E7-FA3B-6E17-4AB40FF326D1",
+  "appleIntelligenceStatus" : {"state":"available"},
+  "developerMode" : 1,
+  "codeSigningID" : "AudioFuse",
+  "codeSigningTeamID" : "",
+  "codeSigningFlags" : 570425857,
+  "codeSigningValidationCategory" : 10,
+  "codeSigningTrustLevel" : 4294967295,
+  "codeSigningAuxiliaryInfo" : 0,
+  "instructionByteStream" : {"beforePC":"+F8FqfZXBqn0Twep\/XsIqf0DApHgJgDQAOAdkQgAQPkAAT\/WCABA+Q==","atPC":"EwlA+WgjANAIzUP5HwET62EDAFQoBAjRHwEIseMpAFQqBABRSX0EUw=="},
+  "bootSessionUUID" : "F509A6D6-9A1C-4A12-9DEB-3C7F04251712",
+  "wakeTime" : 19468,
+  "sleepWakeUUID" : "F65BAE36-A389-4FC0-AFEC-DC72BAA5CED3",
+  "sip" : "enabled",
+  "vmRegionInfo" : "0x10 is not in any region.  Bytes before following region: 4306845680\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      UNUSED SPACE AT START\n--->  \n      __TEXT                      100b54000-100b60000    [   48K] r-x\/r-x SM=COW  \/Users\/USER\/*\/AudioFuse.app\/Contents\/MacOS\/AudioFuse",
+  "exception" : {"codes":"0x0000000000000001, 0x0000000000000010","rawCodes":[1,16],"type":"EXC_BAD_ACCESS","signal":"SIGSEGV","subtype":"KERN_INVALID_ADDRESS at 0x0000000000000010"},
+  "termination" : {"flags":0,"code":11,"namespace":"SIGNAL","indicator":"Segmentation fault: 11","byProc":"exc handler","byPid":79114},
+  "vmregioninfo" : "0x10 is not in any region.  Bytes before following region: 4306845680\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      UNUSED SPACE AT START\n--->  \n      __TEXT                      100b54000-100b60000    [   48K] r-x\/r-x SM=COW  \/Users\/USER\/*\/AudioFuse.app\/Contents\/MacOS\/AudioFuse",
+  "extMods" : {"caller":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"system":{"thread_create":0,"thread_set_state":0,"task_for_pid":32},"targeted":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"warnings":0},
+  "faultingThread" : 0,
+  "threads" : [{"triggered":true,"id":6020812,"threadState":{"x":[{"value":105553118380136},{"value":55},{"value":14},{"value":6516402736},{"value":105553182359680},{"value":2206343163},{"value":60817408},{"value":6281885487145087200},{"value":0},{"value":4321261208,"symbolLocation":0,"symbol":"_PyObject_Malloc"},{"value":0},{"value":2},{"value":0},{"value":0},{"value":0},{"value":0},{"value":8},{"value":105553118380128},{"value":0},{"value":4329232320},{"value":4318973616},{"value":4318973630},{"value":14},{"value":6160031984},{"value":0},{"value":259},{"value":5840190080},{"value":4401496912,"symbolLocation":0,"symbol":"SbkPySide6_QtWidgetsTypeStructs"},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":4321261256},"cpsr":{"value":2147487744},"fp":{"value":6160031040},"sp":{"value":6160030912},"esr":{"value":2449473542,"description":"(Data Abort) byte read Translation fault"},"pc":{"value":4321261260,"matchesCrashFrame":1},"far":{"value":16}},"queue":"com.apple.main-thread","frames":[{"imageOffset":964300,"symbol":"_PyObject_Malloc","symbolLocation":52,"imageIndex":1},{"imageOffset":1344680,"symbol":"PyUnicode_FromString","symbolLocation":124,"imageIndex":1},{"imageOffset":1504160,"symbol":"PyUnicode_InternFromString","symbolLocation":20,"imageIndex":1},{"imageOffset":84868,"symbol":"metaBuilderFromDict(_object*)","symbolLocation":148,"imageIndex":18},{"imageOffset":84676,"symbol":"PySide::SignalManager::retrieveMetaObject(_object*)","symbolLocation":24,"imageIndex":18},{"imageOffset":693852,"symbol":"QMetaObject::cast(QObject const*) const","symbolLocation":40,"imageIndex":19},{"imageOffset":279808,"symbol":"QWidgetPrivate::init(QWidget*, QFlags<Qt::WindowType>)","symbolLocation":108,"imageIndex":21},{"imageOffset":279424,"symbol":"QWidget::QWidget(QWidgetPrivate&, QWidget*, QFlags<Qt::WindowType>)","symbolLocation":92,"imageIndex":21},{"imageOffset":2343720,"symbol":"QDialog::QDialog(QDialogPrivate&, QWidget*, QFlags<Qt::WindowType>)","symbolLocation":32,"imageIndex":21},{"imageOffset":2535108,"symbol":"QMessageBox::QMessageBox(QMessageBox::Icon, QString const&, QString const&, QFlags<QMessageBox::StandardButton>, QWidget*, QFlags<Qt::WindowType>)","symbolLocation":272,"imageIndex":21},{"imageOffset":2541508,"imageIndex":21},{"imageOffset":1968812,"symbol":"Sbk_QMessageBoxFunc_critical(_object*, _object*, _object*)","symbolLocation":1060,"imageIndex":20},{"imageOffset":907456,"symbol":"cfunction_call","symbolLocation":72,"imageIndex":1},{"imageOffset":1994472,"symbol":"_PyEval_EvalFrameDefault","symbolLocation":224488,"imageIndex":1},{"imageOffset":1759552,"symbol":"PyEval_EvalCode","symbolLocation":260,"imageIndex":1},{"imageOffset":13096,"imageIndex":0},{"imageOffset":15384,"imageIndex":0},{"imageOffset":130468,"symbol":"start","symbolLocation":6992,"imageIndex":39}]},{"id":6020821,"frames":[],"threadState":{"x":[{"value":6160592896},{"value":6147},{"value":6160056320},{"value":0},{"value":409603},{"value":18446744073709551615},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":0},"cpsr":{"value":4096},"fp":{"value":0},"sp":{"value":6160592896},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6516354056},"far":{"value":0}}},{"id":6020822,"frames":[],"threadState":{"x":[{"value":6161166336},{"value":5635},{"value":6160629760},{"value":0},{"value":409604},{"value":18446744073709551615},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":0},"cpsr":{"value":4096},"fp":{"value":0},"sp":{"value":6161166336},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6516354056},"far":{"value":0}}},{"id":6020823,"frames":[],"threadState":{"x":[{"value":6161739776},{"value":22787},{"value":6161203200},{"value":0},{"value":409604},{"value":18446744073709551615},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":0},"cpsr":{"value":4096},"fp":{"value":0},"sp":{"value":6161739776},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6516354056},"far":{"value":0}}},{"id":6020824,"threadState":{"x":[{"value":0},{"value":0},{"value":2},{"value":6162310024},{"value":2},{"value":0},{"value":0},{"value":1027},{"value":1024},{"value":8326275776,"symbolLocation":0,"symbol":"_dispatch_mgr_q"},{"value":1024},{"value":2147484415},{"value":6162310096},{"value":9005137670438912},{"value":2095104},{"value":2043},{"value":375},{"value":8349558000},{"value":0},{"value":1027},{"value":0},{"value":0},{"value":2},{"value":6162310024},{"value":2},{"value":6162310024},{"value":105553164734464},{"value":8326275776,"symbolLocation":0,"symbol":"_dispatch_mgr_q"},{"value":132096}],"flavor":"ARM_THREAD_STATE64","lr":{"value":6514702948},"cpsr":{"value":4096},"fp":{"value":6162310000},"sp":{"value":6162309904},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6516103796},"far":{"value":0}},"queue":"com.apple.CoreAnalytics::Client XPC Reply","frames":[{"imageOffset":10868,"symbol":"kevent_id","symbolLocation":8,"imageIndex":42},{"imageOffset":150116,"symbol":"_dispatch_kq_poll","symbolLocation":220,"imageIndex":43},{"imageOffset":152692,"symbol":"_dispatch_event_loop_wait_for_ownership","symbolLocation":460,"imageIndex":43},{"imageOffset":71340,"symbol":"__DISPATCH_WAIT_FOR_QUEUE__","symbolLocation":432,"imageIndex":43},{"imageOffset":70136,"symbol":"_dispatch_sync_f_slow","symbolLocation":140,"imageIndex":43},{"imageOffset":126612,"symbol":"invocation function for block in CoreAnalytics::Client::retryXpcMessageHelper_sync(applesauce::xpc::dict, XPCMessagePriority, bool, unsigned char, unsigned long long)","symbolLocation":244,"imageIndex":44},{"imageOffset":64440,"symbol":"_xpc_connection_reply_callout","symbolLocation":120,"imageIndex":45},{"imageOffset":64176,"symbol":"_xpc_connection_call_reply_async","symbolLocation":96,"imageIndex":45},{"imageOffset":111840,"symbol":"<deduplicated_symbol>","symbolLocation":16,"imageIndex":43},{"imageOffset":128300,"symbol":"_dispatch_mach_msg_async_reply_invoke","symbolLocation":340,"imageIndex":43},{"imageOffset":40600,"symbol":"_dispatch_lane_serial_drain","symbolLocation":332,"imageIndex":43},{"imageOffset":43820,"symbol":"_dispatch_lane_invoke","symbolLocation":392,"imageIndex":43},{"imageOffset":85556,"symbol":"_dispatch_root_queue_drain_deferred_wlh","symbolLocation":284,"imageIndex":43},{"imageOffset":83764,"symbol":"_dispatch_workloop_worker_thread","symbolLocation":720,"imageIndex":43},{"imageOffset":11968,"symbol":"_pthread_wqthread","symbolLocation":292,"imageIndex":46},{"imageOffset":7184,"symbol":"start_wqthread","symbolLocation":8,"imageIndex":46}]},{"id":6020827,"frames":[],"threadState":{"x":[{"value":6162886656},{"value":30979},{"value":6162350080},{"value":0},{"value":409604},{"value":18446744073709551615},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":0},"cpsr":{"value":4096},"fp":{"value":0},"sp":{"value":6162886656},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6516354056},"far":{"value":0}}},{"id":6020828,"name":"com.apple.NSEventThread","threadState":{"x":[{"value":268451845},{"value":21592279046},{"value":8589934592,"objc-selector":":"},{"value":108864536051712},{"value":0},{"value":108864536051712},{"value":2},{"value":4294967295},{"value":0},{"value":17179869184},{"value":0},{"value":2},{"value":0},{"value":0},{"value":25347},{"value":0},{"value":18446744073709551569},{"value":8349558320},{"value":0},{"value":4294967295},{"value":2},{"value":108864536051712},{"value":0},{"value":108864536051712},{"value":21592279046},{"value":6163456136},{"value":8589934592,"objc-selector":":"},{"value":18446744073709550527},{"value":4412409862}],"flavor":"ARM_THREAD_STATE64","lr":{"value":6516172148},"cpsr":{"value":4096},"fp":{"value":6163455984},"sp":{"value":6163455904},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6516096052},"far":{"value":0}},"frames":[{"imageOffset":3124,"symbol":"mach_msg2_trap","symbolLocation":8,"imageIndex":42},{"imageOffset":79220,"symbol":"mach_msg2_internal","symbolLocation":76,"imageIndex":42},{"imageOffset":39360,"symbol":"mach_msg_overwrite","symbolLocation":480,"imageIndex":42},{"imageOffset":4032,"symbol":"mach_msg","symbolLocation":24,"imageIndex":42},{"imageOffset":515432,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":160,"imageIndex":47},{"imageOffset":509524,"symbol":"__CFRunLoopRun","symbolLocation":1188,"imageIndex":47},{"imageOffset":1371104,"symbol":"_CFRunLoopRunSpecificWithOptions","symbolLocation":532,"imageIndex":47},{"imageOffset":1420388,"symbol":"_NSEventThread","symbolLocation":184,"imageIndex":48},{"imageOffset":27736,"symbol":"_pthread_start","symbolLocation":136,"imageIndex":46},{"imageOffset":7196,"symbol":"thread_start","symbolLocation":8,"imageIndex":46}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4306845696,
+    "CFBundleShortVersionString" : "0.0.0",
+    "CFBundleIdentifier" : "AudioFuse",
+    "size" : 49152,
+    "uuid" : "3e66a4a5-502c-3f55-518b-eb61a4456e9f",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/MacOS\/AudioFuse",
+    "name" : "AudioFuse"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4320296960,
+    "size" : 4161536,
+    "uuid" : "3987c91f-7bf6-36e7-90e3-97e50d4d7f91",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/libpython3.12.dylib",
+    "name" : "libpython3.12.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4311269376,
+    "size" : 49152,
+    "uuid" : "0453b311-bb4a-32e5-82e5-927d5e5a2426",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/_struct.cpython-312-darwin.so",
+    "name" : "_struct.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4311384064,
+    "size" : 49152,
+    "uuid" : "a3813552-c4c4-30af-9ee8-672a1c71b4a4",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/zlib.cpython-312-darwin.so",
+    "name" : "zlib.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4311662592,
+    "size" : 98304,
+    "uuid" : "bb5557fa-69ac-3834-9573-f8f0e376ab1c",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/libz.1.dylib",
+    "name" : "libz.1.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4311498752,
+    "size" : 32768,
+    "uuid" : "001db5d5-0ef5-3abe-8c26-427b7139e3bf",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/_opcode.cpython-312-darwin.so",
+    "name" : "_opcode.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4312875008,
+    "size" : 32768,
+    "uuid" : "759b854d-de01-3447-99e6-6b567389c3f2",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/binascii.cpython-312-darwin.so",
+    "name" : "binascii.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4314464256,
+    "size" : 32768,
+    "uuid" : "ea51280e-85cc-3f99-8e7f-dce673ef68ae",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/_bz2.cpython-312-darwin.so",
+    "name" : "_bz2.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4314710016,
+    "size" : 81920,
+    "uuid" : "0f29847c-5689-38aa-a8fb-d9a99a2ae679",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/libbz2.dylib",
+    "name" : "libbz2.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4314562560,
+    "size" : 49152,
+    "uuid" : "f07e1538-948a-3b17-a579-253ae8e70ae6",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/_lzma.cpython-312-darwin.so",
+    "name" : "_lzma.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4315054080,
+    "size" : 131072,
+    "uuid" : "43c01aff-c040-33ff-bb38-5e1ec42d9e75",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/liblzma.5.dylib",
+    "name" : "liblzma.5.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4315250688,
+    "size" : 65536,
+    "uuid" : "94838868-a625-320f-bc8f-4137114916a4",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/math.cpython-312-darwin.so",
+    "name" : "math.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4314857472,
+    "size" : 32768,
+    "uuid" : "f56ec859-50ab-30b8-bee7-ac7da9491a18",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/_bisect.cpython-312-darwin.so",
+    "name" : "_bisect.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4314955776,
+    "size" : 32768,
+    "uuid" : "3cc56fa5-ffe7-300c-a8d2-5cb77ed34443",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/_random.cpython-312-darwin.so",
+    "name" : "_random.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4316430336,
+    "size" : 49152,
+    "uuid" : "4990c95e-3b03-3210-99a9-eec63d8e3eb9",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/_sha2.cpython-312-darwin.so",
+    "name" : "_sha2.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4316545024,
+    "size" : 16384,
+    "uuid" : "0ade699d-c23f-36bf-addb-a55839f388ca",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/shiboken6\/Shiboken.abi3.so",
+    "name" : "Shiboken.abi3.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4317151232,
+    "size" : 327680,
+    "uuid" : "b8ff54b9-9ad3-3ba7-9fe3-811a5f694a48",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/shiboken6\/libshiboken6.abi3.6.11.dylib",
+    "name" : "libshiboken6.abi3.6.11.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4333060096,
+    "size" : 3571712,
+    "uuid" : "d2307a43-fb37-31f0-8aeb-d552dee970a9",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/QtCore.abi3.so",
+    "name" : "QtCore.abi3.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4318724096,
+    "size" : 262144,
+    "uuid" : "3a089e7d-d1fe-3dc2-9931-6e157e72ad57",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/libpyside6.abi3.6.11.dylib",
+    "name" : "libpyside6.abi3.6.11.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4345004032,
+    "CFBundleShortVersionString" : "6.11",
+    "CFBundleIdentifier" : "org.qt-project.QtCore",
+    "size" : 5160960,
+    "uuid" : "b0667a98-b1fe-378b-8a52-255db2e29c5a",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/Qt\/lib\/QtCore.framework\/Versions\/A\/QtCore",
+    "name" : "QtCore",
+    "CFBundleVersion" : "6.11.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4395597824,
+    "size" : 5423104,
+    "uuid" : "b956f18a-ae09-370a-ac76-5e7cef837cf1",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/QtWidgets.abi3.so",
+    "name" : "QtWidgets.abi3.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4386521088,
+    "CFBundleShortVersionString" : "6.11",
+    "CFBundleIdentifier" : "org.qt-project.QtWidgets",
+    "size" : 4636672,
+    "uuid" : "b97170bc-6bbb-3977-9e66-f307b7f5f0e1",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/Qt\/lib\/QtWidgets.framework\/Versions\/A\/QtWidgets",
+    "name" : "QtWidgets",
+    "CFBundleVersion" : "6.11.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4413194240,
+    "CFBundleShortVersionString" : "6.11",
+    "CFBundleIdentifier" : "org.qt-project.QtGui",
+    "size" : 7127040,
+    "uuid" : "69a761e1-e8ae-3ff4-b13e-97088d69e666",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/Qt\/lib\/QtGui.framework\/Versions\/A\/QtGui",
+    "name" : "QtGui",
+    "CFBundleVersion" : "6.11.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4327178240,
+    "CFBundleShortVersionString" : "6.11",
+    "CFBundleIdentifier" : "org.qt-project.QtDBus",
+    "size" : 557056,
+    "uuid" : "ec505890-3bf1-3f55-815d-ae73e1849238",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/Qt\/lib\/QtDBus.framework\/Versions\/A\/QtDBus",
+    "name" : "QtDBus",
+    "CFBundleVersion" : "6.11.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4421648384,
+    "size" : 4161536,
+    "uuid" : "6424c540-121c-32e3-9164-683ef71ea775",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/QtGui.abi3.so",
+    "name" : "QtGui.abi3.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4316987392,
+    "size" : 32768,
+    "uuid" : "c6564331-a4a1-3e95-aa7e-b259bdc2455f",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/fcntl.cpython-312-darwin.so",
+    "name" : "fcntl.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4319182848,
+    "size" : 32768,
+    "uuid" : "480a7416-8453-344b-baef-f5aecd7f44a3",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/_posixsubprocess.cpython-312-darwin.so",
+    "name" : "_posixsubprocess.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4319395840,
+    "size" : 49152,
+    "uuid" : "d2e4d820-daab-31c9-a3fc-b2cfc17d99c3",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/select.cpython-312-darwin.so",
+    "name" : "select.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4319641600,
+    "size" : 65536,
+    "uuid" : "ea4dd53d-f79f-3b01-b3b2-969fd7c4637c",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/array.cpython-312-darwin.so",
+    "name" : "array.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4319510528,
+    "size" : 49152,
+    "uuid" : "a1d001f8-a427-3bd8-9883-acf56453080b",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/_json.cpython-312-darwin.so",
+    "name" : "_json.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4319772672,
+    "size" : 49152,
+    "uuid" : "fc554960-bce8-33b3-83ea-52fa9d209ea0",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/python3__dot__12\/lib-dynload\/audioop.cpython-312-darwin.so",
+    "name" : "audioop.cpython-312-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4330029056,
+    "size" : 589824,
+    "uuid" : "8d195e17-377d-339e-a52d-13488d251f42",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/QtMultimedia.abi3.so",
+    "name" : "QtMultimedia.abi3.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4338958336,
+    "CFBundleShortVersionString" : "6.11",
+    "CFBundleIdentifier" : "org.qt-project.QtMultimedia",
+    "size" : 966656,
+    "uuid" : "c1be6d34-c230-3d56-ab8a-4d6248d22f4d",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/Qt\/lib\/QtMultimedia.framework\/Versions\/A\/QtMultimedia",
+    "name" : "QtMultimedia",
+    "CFBundleVersion" : "6.11.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4340269056,
+    "CFBundleShortVersionString" : "6.11",
+    "CFBundleIdentifier" : "org.qt-project.QtNetwork",
+    "size" : 1277952,
+    "uuid" : "436638dd-a4cf-366f-ac6b-7a49a2850aca",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/Qt\/lib\/QtNetwork.framework\/Versions\/A\/QtNetwork",
+    "name" : "QtNetwork",
+    "CFBundleVersion" : "6.11.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4319281152,
+    "CFBundleShortVersionString" : "6.11",
+    "CFBundleIdentifier" : "org.qt-project.QtConcurrent",
+    "size" : 16384,
+    "uuid" : "9622906c-e444-3c9a-9933-890ec898ee4d",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/Qt\/lib\/QtConcurrent.framework\/Versions\/A\/QtConcurrent",
+    "name" : "QtConcurrent",
+    "CFBundleVersion" : "6.11.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4341972992,
+    "size" : 1064960,
+    "uuid" : "4c820010-34a2-310a-9c71-6dbb82ed6870",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/QtNetwork.abi3.so",
+    "name" : "QtNetwork.abi3.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4343824384,
+    "size" : 720896,
+    "uuid" : "0d61082f-4583-39ec-81fe-89dd43afcc6f",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/Qt\/plugins\/platforms\/libqcocoa.dylib",
+    "name" : "libqcocoa.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 4332896256,
+    "size" : 49152,
+    "uuid" : "a4dd56f1-375a-3540-844b-5e397f0b78b3",
+    "path" : "\/usr\/lib\/libobjc-trampolines.dylib",
+    "name" : "libobjc-trampolines.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4394418176,
+    "size" : 147456,
+    "uuid" : "d367df20-39d1-3dc7-847d-9a982ad4eef8",
+    "path" : "\/Users\/USER\/*\/AudioFuse.app\/Contents\/Frameworks\/PySide6\/Qt\/plugins\/styles\/libqmacstyle.dylib",
+    "name" : "libqmacstyle.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6512328704,
+    "size" : 679624,
+    "uuid" : "9f682dcf-340c-3bfa-bcdd-dd702f30313e",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6516400128,
+    "size" : 35060,
+    "uuid" : "d93ec420-f465-3a3a-916d-a04af9b023eb",
+    "path" : "\/usr\/lib\/system\/libsystem_platform.dylib",
+    "name" : "libsystem_platform.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6516092928,
+    "size" : 250512,
+    "uuid" : "51565b39-f595-3e96-a217-fef29815057a",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6514552832,
+    "size" : 291392,
+    "uuid" : "e17aa23f-db2a-3302-b14c-f6b08c540fcf",
+    "path" : "\/usr\/lib\/system\/libdispatch.dylib",
+    "name" : "libdispatch.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6679441408,
+    "CFBundleShortVersionString" : "1.0",
+    "CFBundleIdentifier" : "com.apple.analyticsd",
+    "size" : 196064,
+    "uuid" : "ed4098ac-ece3-3a22-92f1-a2292dfc13f2",
+    "path" : "\/System\/Library\/PrivateFrameworks\/CoreAnalytics.framework\/Versions\/A\/CoreAnalytics",
+    "name" : "CoreAnalytics",
+    "CFBundleVersion" : "1"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6513025024,
+    "size" : 345376,
+    "uuid" : "618039c8-9965-3782-a7d2-90fd4c3dd66f",
+    "path" : "\/usr\/lib\/system\/libxpc.dylib",
+    "name" : "libxpc.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6516346880,
+    "size" : 52028,
+    "uuid" : "e7a73008-0c09-31e3-9dd9-0c61652f0e85",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6516633600,
+    "CFBundleShortVersionString" : "6.9",
+    "CFBundleIdentifier" : "com.apple.CoreFoundation",
+    "size" : 5626976,
+    "uuid" : "04941709-2330-3bf8-9213-6d33964db448",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/Versions\/A\/CoreFoundation",
+    "name" : "CoreFoundation",
+    "CFBundleVersion" : "4424.1.402"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6588391424,
+    "CFBundleShortVersionString" : "6.9",
+    "CFBundleIdentifier" : "com.apple.AppKit",
+    "size" : 24259264,
+    "uuid" : "59e23bd5-d01e-305a-b96f-a5790356049a",
+    "path" : "\/System\/Library\/Frameworks\/AppKit.framework\/Versions\/C\/AppKit",
+    "name" : "AppKit",
+    "CFBundleVersion" : "2685.50.120"
+  }
+],
+  "sharedCache" : {
+  "base" : 6511198208,
+  "size" : 5978570752,
+  "uuid" : "2d40543a-792e-37b8-978d-3d7030e1aa81"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=1.3G resident=0K(0%) swapped_out_or_unallocated=1.3G(100%)\nWritable regions: Total=1.2G written=705K(0%) resident=705K(0%) swapped_out=0K(0%) unallocated=1.2G(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nActivity Tracing                   256K        1 \nCoreGraphics                        16K        1 \nFoundation                          16K        1 \nKernel Alloc Once                   32K        1 \nMALLOC                             1.2G       51 \nMALLOC guard page                  288K       18 \nSTACK GUARD                       56.1M        7 \nStack                             11.2M        7 \nVM_ALLOCATE                       8240K       11 \n__AUTH                            3052K      345 \n__AUTH_CONST                      53.9M      638 \n__CTF                               824        1 \n__DATA                            17.1M      626 \n__DATA_CONST                      28.5M      679 \n__DATA_DIRTY                      3859K      550 \n__FONT_DATA                        2352        1 \n__LINKEDIT                       587.8M       40 \n__OBJC_RO                         79.1M        1 \n__OBJC_RW                         2597K        1 \n__TEXT                           703.5M      696 \n__TPRO_CONST                       128K        2 \nmapped file                      234.2M       19 \npage table in kernel               705K        1 \nshared memory                      864K       15 \n===========                     =======  ======= \nTOTAL                              3.0G     3713 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+    "queue" : "com.apple.main-thread"
+  }
+},
+  "logWritingSignature" : "159978750bceb7e6f8845bbfad5ac43d9a09c50e",
+  "bug_type" : "309",
+  "roots_installed" : 0,
+  "trmStatus" : 10240,
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "5fb4245a1bbfe8005e33a1e1",
+      "factorPackIds" : [
+
+      ],
+      "deploymentId" : 240000021
+    },
+    {
+      "rolloutId" : "639124e81d92412bfb4880b3",
+      "factorPackIds" : [
+
+      ],
+      "deploymentId" : 240000012
+    }
+  ],
+  "experiments" : [
+    {
+      "treatmentId" : "1cabf156-a0a4-4874-8eb1-0ff7c514ddbf",
+      "experimentId" : "687ad3eb2c0a4d3b710c5dcd",
+      "deploymentId" : 400000016
+    }
+  ]
+}
+}
+

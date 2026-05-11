@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QMainWindow, QWidget, QHBoxLayout, QVBoxLayout,
     QPushButton, QFileDialog, QMessageBox
 )
-from app.theme import MAIN_WINDOW_STYLE, ACTION_BUTTON_STYLE, GAP_BUTTON_STYLE
+from app.theme import CANVAS, ACTION_BUTTON_STYLE, GAP_BUTTON_STYLE
 from app.audio_panel import AudioPanel
 from app.audio_engine import AudioEngine
 
@@ -28,8 +28,8 @@ class MainWindow(QMainWindow):
 
     def _setup_ui(self):
         central = QWidget()
+        central.setStyleSheet(f"background-color: {CANVAS};")
         self.setCentralWidget(central)
-        self.setStyleSheet(MAIN_WINDOW_STYLE)
         layout = QVBoxLayout(central)
         layout.setContentsMargins(32, 32, 32, 32)
 
