@@ -46,7 +46,10 @@ class AudioPanel(QWidget):
             self.clip_loaded.emit(path)
             self.update()
         except Exception as e:
+            self.segment = None
+            self.waveform = []
             self.label.setText(f"{self.title}\nError: {e}")
+            self.clip_loaded.emit("")
             QMessageBox.warning(self, "Load Error", f"Failed to load audio:\n{e}")
 
     def paintEvent(self, event):
