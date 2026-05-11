@@ -1,9 +1,28 @@
+import os
+import sys
 import subprocess
 
 from pydub import AudioSegment
 
 
 class AudioEngine:
+    def __init__(self):
+        self.clip1: AudioSegment | None = None
+        self.clip2: AudioSegment | None = None
+        self._configure_ffmpeg_path()
+
+    @staticmethod
+    def _ffmpeg_path() -> str | None:
+        if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+            path = os.path.join(sys._MEIPASS, "ffmpeg")
+            if os.path.isfile(path):
+                return path
+        return subprocess.run(["which", "ffmpeg"], capture_output=True, text=True).stdout.strip() or None
+
+    def _configure_ffmpeg_path(self):
+        path = self._ffmpeg_path()
+        if path:
+            AudioSegment.converter = path
     def __init__(self):
         self.clip1: AudioSegment | None = None
         self.clip2: AudioSegment | None = None
@@ -27,7 +46,7 @@ class AudioEngine:
     @staticmethod
     def ffmpeg_available() -> bool:
         try:
-            subprocess.run(["ffmpeg", "-version"], capture_output=True, check=True)
+            subprocess.run([AudioSegment.converter or "ffmpeg", "-version"], capture_output=True, check=True)
             return True
         except (FileNotFoundError, subprocess.CalledProcessError):
             return False

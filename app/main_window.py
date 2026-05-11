@@ -18,12 +18,12 @@ class MainWindow(QMainWindow):
         self.preview_player = QMediaPlayer(self)
         self.preview_audio = QAudioOutput(self)
         self.preview_player.setAudioOutput(self.preview_audio)
-        self.preview_player.playbackStateChanged.connect(self._on_preview_state_changed)
         self._preview_temp = None
         atexit.register(self._cleanup_temp)
         self.setWindowTitle("AudioFuse")
         self.setMinimumSize(600, 300)
         self._setup_ui()
+        self.preview_player.playbackStateChanged.connect(self._on_preview_state_changed)
 
     def _setup_ui(self):
         central = QWidget()
