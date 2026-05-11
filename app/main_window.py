@@ -1,12 +1,13 @@
 import os
 import tempfile
 import atexit
-from PySide6.QtCore import QUrl
+from PySide6.QtCore import Qt, QUrl
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PySide6.QtWidgets import (
     QMainWindow, QWidget, QHBoxLayout, QVBoxLayout,
     QPushButton, QFileDialog, QMessageBox
 )
+from app.theme import MAIN_WINDOW_STYLE, ACTION_BUTTON_STYLE, GAP_BUTTON_STYLE
 from app.audio_panel import AudioPanel
 from app.audio_engine import AudioEngine
 
@@ -28,9 +29,12 @@ class MainWindow(QMainWindow):
     def _setup_ui(self):
         central = QWidget()
         self.setCentralWidget(central)
+        self.setStyleSheet(MAIN_WINDOW_STYLE)
         layout = QVBoxLayout(central)
+        layout.setContentsMargins(32, 32, 32, 32)
 
         panels_layout = QHBoxLayout()
+        panels_layout.setSpacing(24)
         self.panel1 = AudioPanel("Clip 1", 1, self.engine)
         self.panel2 = AudioPanel("Clip 2", 2, self.engine)
         panels_layout.addWidget(self.panel1)
@@ -38,25 +42,33 @@ class MainWindow(QMainWindow):
         layout.addLayout(panels_layout)
 
         controls_layout = QHBoxLayout()
+        controls_layout.setContentsMargins(0, 24, 0, 0)
         controls_layout.addStretch()
 
         self.gap_button = QPushButton("Gap: OFF")
         self.gap_button.setCheckable(True)
+        self.gap_button.setCursor(Qt.PointingHandCursor)
         self.gap_button.clicked.connect(self._toggle_gap)
         controls_layout.addWidget(self.gap_button)
 
         self.preview_button = QPushButton("Preview")
+        self.preview_button.setCursor(Qt.PointingHandCursor)
         self.preview_button.clicked.connect(self._toggle_preview)
         self.preview_button.setEnabled(False)
         controls_layout.addWidget(self.preview_button)
 
         self.download_button = QPushButton("Download")
+        self.download_button.setCursor(Qt.PointingHandCursor)
         self.download_button.clicked.connect(self._download)
         self.download_button.setEnabled(False)
         controls_layout.addWidget(self.download_button)
 
         controls_layout.addStretch()
         layout.addLayout(controls_layout)
+
+        self.preview_button.setStyleSheet(ACTION_BUTTON_STYLE)
+        self.download_button.setStyleSheet(ACTION_BUTTON_STYLE)
+        self.gap_button.setStyleSheet(GAP_BUTTON_STYLE)
 
         self.panel1.clip_loaded.connect(self._check_ready)
         self.panel2.clip_loaded.connect(self._check_ready)
