@@ -2,7 +2,7 @@ from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QPainter, QColor
 from PySide6.QtWidgets import QWidget, QFileDialog, QVBoxLayout, QLabel, QMessageBox
 from app.audio_engine import AudioEngine
-from app.theme import PANEL_STYLE, product_shadow, INK, INK_MUTED, PRIMARY
+from app.theme import PANEL_STYLE, product_shadow, INK, INK_MUTED, PRIMARY, ERROR_RED
 
 
 class AudioPanel(QWidget):
@@ -51,7 +51,7 @@ class AudioPanel(QWidget):
         return (
             f"<span style='font-size:28px; font-weight:300; color:{INK};'>"
             f"{self.title}</span><br>"
-            f"<span style='font-size:14px; color:red;'>{message}</span>"
+            f"<span style='font-size:14px; color:{ERROR_RED};'>{message}</span>"
         )
 
     def mousePressEvent(self, event):

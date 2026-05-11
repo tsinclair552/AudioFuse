@@ -11,6 +11,7 @@ PRIMARY_HOVER = "#0055aa"
 PRIMARY_PRESSED = "#004488"
 PRIMARY_DISABLED = "#b3d4f0"
 HAIRLINE = "#e0e0e0"
+ERROR_RED = "#ff3b30"
 
 
 def product_shadow(parent: QWidget) -> QGraphicsDropShadowEffect:
