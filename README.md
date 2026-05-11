@@ -32,19 +32,10 @@
 
 ### UI Layout
 
-```
-+------------------------------------------+
-|  AudioFuse                                |
-+---------------------------+---------------+
-|  Clip 1                   |  Clip 2       |
-|  [Click to load]          |  [Click]      |
-|  [waveform]               |  [waveform]   |
-|  0:00 / 0:00              |  0:00 / 0:00 |
-+---------------------------+---------------+
-|     [Gap toggle]     [ Download ]         |
-+------------------------------------------+
-```
+NOTE: See AudioFuseUI.png in source folder
 
+- **Clip 1**: Window for first clip
+- **Clip 2**: Window for second clip
 - **Gap toggle:** when active, inserts 1 second of silence between the two clips in the combined output
 - **Download button:** disabled until both clips are loaded
 - **Preview button:** plays the combined audio if desired before downloading.
