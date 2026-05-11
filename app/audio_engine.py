@@ -23,9 +23,6 @@ class AudioEngine:
         path = self._ffmpeg_path()
         if path:
             AudioSegment.converter = path
-    def __init__(self):
-        self.clip1: AudioSegment | None = None
-        self.clip2: AudioSegment | None = None
 
     def load(self, path: str, slot: int = 1) -> AudioSegment:
         segment = AudioSegment.from_file(path)

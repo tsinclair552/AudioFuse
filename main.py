@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMessageBox
+from PySide6.QtWidgets import QApplication, QMessageBox, QWidget
 from app.audio_engine import AudioEngine
 from app.main_window import MainWindow
 
@@ -8,8 +8,9 @@ def main():
     app = QApplication(sys.argv)
     engine = AudioEngine()
     if not engine.ffmpeg_available():
+        parent = QWidget()
         QMessageBox.critical(
-            None, "Missing Dependency",
+            parent, "Missing Dependency",
             "ffmpeg is required but not found.\n\n"
             "Install it:\n"
             "  macOS: brew install ffmpeg\n"
