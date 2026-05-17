@@ -23,6 +23,9 @@ class AudioEngine:
         path = self._ffmpeg_path()
         if path:
             AudioSegment.converter = path
+            bindir = os.path.dirname(path)
+            if bindir not in os.environ.get("PATH", "").split(os.pathsep):
+                os.environ["PATH"] = bindir + os.pathsep + os.environ.get("PATH", "")
 
     def load(self, path: str, slot: int = 1) -> AudioSegment:
         segment = AudioSegment.from_file(path)

@@ -115,7 +115,8 @@ class MainWindow(QMainWindow):
     def _download(self):
         self._stop_preview()
         path, _ = QFileDialog.getSaveFileName(
-            self, "Save Combined Clip", "",
+            self, "Save Combined Clip",
+            os.path.expanduser("~/Desktop/combined.wav"),
             "WAV Audio (*.wav);;MP3 Audio (*.mp3)"
         )
         if not path:

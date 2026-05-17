@@ -1,4 +1,5 @@
 import os
+import subprocess
 import tempfile
 import struct
 import wave
@@ -19,6 +20,17 @@ def _generate_sine_wav(path: str, duration_ms: int = 2000, frequency: int = 440,
         wf.setsampwidth(2)
         wf.setframerate(sample_rate)
         wf.writeframes(struct.pack(f'<{len(samples)}h', *samples))
+
+
+def _generate_sine_mp3(path: str, duration_ms: int = 2000, frequency: int = 440, sample_rate: int = 44100):
+    """Generate a simple sine wave MP3 file for testing using ffmpeg."""
+    wav_path = path.replace('.mp3', '.wav')
+    _generate_sine_wav(wav_path, duration_ms, frequency, sample_rate)
+    subprocess.run(
+        ["ffmpeg", "-y", "-i", wav_path, "-codec:a", "libmp3lame", "-b:a", "128k", path],
+        capture_output=True, check=True
+    )
+    os.unlink(wav_path)
 
 
 @pytest.fixture
@@ -43,6 +55,21 @@ def test_load_wav(engine, wav_files):
     segment = engine.load(wav_files[0])
     assert segment is not None
     assert segment.duration_seconds == 1.0
+
+
+@pytest.fixture
+def mp3_file():
+    fd, path = tempfile.mkstemp(suffix='.mp3')
+    os.close(fd)
+    _generate_sine_mp3(path, duration_ms=1000, frequency=440)
+    yield path
+    os.unlink(path)
+
+
+def test_load_mp3(engine, mp3_file):
+    segment = engine.load(mp3_file)
+    assert segment is not None
+    assert segment.duration_seconds == pytest.approx(1.0, rel=0.01)
 
 
 def test_concatenate_no_gap(engine, wav_files):
